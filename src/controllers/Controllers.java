@@ -24,6 +24,12 @@ public class Controllers {
                 case 1:
                     inputPersons(); 
                     break;
+                case 2:
+                    addPersons();
+                    break;
+                case 3:
+                sortPersons();
+                
                 case 100: 
                     System.out.println("Adiós");
                     break;
@@ -42,16 +48,45 @@ public class Controllers {
     }
 
     public void addPersons() {
-        int numeroPersonas = view.inputInt("Ingrese el número de personas a adicionar: ");
-        Person[] personasTotales = new Person[personas.length + numeroPersonas];
 
-        for (int i = 0; i < personas.length; i++) {
+        if(personas == null){
+            view.showMessage("No existe, ingrese las palabras por primer vez: ");
+            inputPersons();
+        }else{
+            int numeroPersonas = view.inputInt("Ingrese el número de personas a adicionar: ");
+            Person[] personasTotales = new Person[personas.length + numeroPersonas];
+
+            for (int i = 0; i < personas.length; i++) {
             personasTotales[i] = personas[i];
-        }
+            }
 
-        for (int i = 0; i < numeroPersonas; i++) {
-            personasTotales[personas.length + i] = view.inputPerson(); 
-        }
+            for (int i = personas.length; i < personas.length; i++) {
+            personas[i] = view.inputPerson(); 
+            }
+
+            personas= personasTotales;
+
 
     }
 }
+
+public void sortPersons() {
+    if (personas == null || personas.length == 0) {
+        view.showMessage("No hay personas para ordenar.");
+        return;
+    }
+
+    int sortintOption = view.selectSortingMethods();
+
+    if (sortintOption == 1) {
+        sortingMethods.sortByNameWithBubble(personas); // Asegúrate de pasar el array de personas
+        view.showMessage("Personas ordenadas por nombre.");
+    } else if (sortintOption == 2) {
+        sortingMethods.sortByEdadWithSelection(personas); // Asegúrate de pasar el array de personas
+        view.showMessage("Personas ordenadas por edad.");
+    } else {
+        view.showMessage("Opción no válida");
+    }
+
+}
+    }

@@ -1,35 +1,33 @@
 package view;
 
-import java.util.Scanner; // Corregido
-
+import java.util.Scanner; 
 import models.Person;
 
 public class Views {
-    private Scanner scanner; // Declaración del Scanner
+    private Scanner scanner; 
 
-    // Constructor
     public Views() {
-        this.scanner = new Scanner(System.in); // Inicialización del Scanner
+        this.scanner = new Scanner(System.in); 
     }
 
     public int showMenu() {
         System.out.println("Menú");
         System.out.println("1. Ingresar Personas");
+        System.out.println("2. Adicionar Personas");
         System.out.println("100. Salir");
         System.out.print("Ingrese una opción: ");
-
         return scanner.nextInt();
     }
 
     public Person inputPerson() {
         String name = inputName();
         int edad = inputEdad();
-        return new Person(name, edad); // Corregido el nombre de la clase
+        return new Person(name, edad); 
     }
 
     public String inputName() {
         System.out.print("Ingrese el nombre: ");
-        return scanner.next(); // Cambiado a next() para capturar un String
+        return scanner.next(); 
     }
 
     public int inputEdad() {
@@ -40,4 +38,10 @@ public class Views {
         System.out.print(message);
         return scanner.nextInt();
     }
+
+    public void showMessage(String message) {
+        System.out.println("LOG" + message);
+
+    }    
+    public int selec
 }
