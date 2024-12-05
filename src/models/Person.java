@@ -8,7 +8,7 @@ public class Person {
     public Person(String nombre, int edad) {
         this.nombre = nombre;
         this.edad = edad;
-        System.out.println("Persona Creada");
+        System.out.println("Persona creada.");
     }
 
     public String getNombre() {
@@ -28,9 +28,7 @@ public class Person {
     }
 
     @Override
-
     public String toString() {
-        return " Nombre: " + nombre + "," + " Edad: " + edad;
+        return "Nombre: " + nombre + ", Edad: " + edad;
     }
-
 }
